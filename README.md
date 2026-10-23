@@ -1,117 +1,98 @@
-Software Quality Engineering — Unit Test Automation
-Project Overview
+## SQE Assignment: Unit Testing and Test Automation
 
-This project focuses on unit test automation using Python and pytest as part of a Software Quality Engineering assignment.
+### Project Overview
 
-The assignment extends the existing Python algorithms repository by adding automated unit tests for absolute-value-related functions, parameterized test cases, CSV-based data-driven testing, and pytest marker configuration.
+This assignment uses the open-source **TheAlgorithms/Python** project to demonstrate automated unit testing with Python and pytest.
 
-Objectives
-Implement automated unit tests for absolute-value-related functions.
-Test positive, negative, zero, decimal, and list-based inputs.
-Use pytest parameterization to test multiple input scenarios.
-Implement data-driven testing using external CSV test data.
-Configure custom pytest markers for test organization.
-Maintain a spreadsheet of test cases for documentation.
-Technologies Used
-Python — programming language
-pytest — unit testing framework
-CSV — external test data
-Git and GitHub — version control and repository hosting
-Excel — test case documentation
-Project Structure
-SQE-Assignment-3/
-├── tests/
-│   └── test_abs_module.py
-├── test_data/
-│   └── abs_test_data.csv
-├── docs/
-│   └── Test_Cases.xlsx
-├── pyproject.toml
-└── README.md
+The selected test module is `maths.abs`. The tests cover absolute value calculation, minimum and maximum values, sorting-based maximum calculation, empty-list error handling, and CSV-based data-driven testing.
 
-Testing Scope
+### Development Environment
 
-The automated tests cover the following functions imported from maths.abs:
+- Operating System: Windows
+- Python: 3.15.0
+- pytest: 9.1.1
+- pytest-xdist: 3.8.0
+- Test Framework: pytest
 
-abs_val()
-abs_min()
-abs_max()
-abs_max_sort()
+### Project Files
 
-The test scenarios include:
+- `tests/test_abs_module.py` — automated unit tests
+- `test_data/abs_test_data.csv` — external CSV test data
+- `docs/Test_Cases.xlsx` — Excel test cases and execution summary
+- `pyproject.toml` — pytest configuration and test markers
 
-Positive and negative numbers
-Zero and decimal values
-Lists containing positive and negative numbers
-Single-element lists
-Empty-list error handling
-CSV-driven test cases for abs_val()
-Data-Driven Testing
+### Test Design Techniques
 
-The file test_data/abs_test_data.csv contains input values and their expected results.
+The tests use the following techniques where applicable:
 
-The CSV data is loaded and passed to pytest using parameterization, allowing the same test function to validate multiple input cases.
+- **Equivalence Class Partitioning (ECP):** testing positive, negative, zero, and empty-list inputs.
+- **Boundary Value Analysis (BVA):** checking values around zero and other representative numeric inputs.
+- **Parameterized Testing:** running the same test function with multiple input and expected-output combinations.
+- **Data-Driven Testing:** loading test inputs and expected results from a CSV file.
+- **Exception Testing:** checking the expected `ValueError` for empty-list inputs.
 
-Pytest Configuration
+### Setup Instructions
 
-The pyproject.toml file defines custom pytest markers used to categorize tests:
+1. Install Python and ensure it is available in PATH.
+2. Open PowerShell in the project directory.
+3. Create a virtual environment:
 
-unit — identifies unit tests
-csv_data — identifies tests that use external CSV data
-How to Run the Tests
-1. Clone the repository
-git clone https://github.com/Hunaiza-ct/SQE-Assignment-3.git
-cd SQE-Assignment-3
+   ```powershell
+   python -m venv .venv
+   ```
 
-2. Create and activate a virtual environment
+4. Activate the virtual environment:
 
-On Windows PowerShell:
+   ```powershell
+   .\.venv\Scripts\Activate.ps1
+   ```
 
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+5. Install the required testing packages:
 
-3. Install pytest
-python -m pip install pytest
+   ```powershell
+   python -m pip install pytest pytest-xdist
+   ```
 
+### Running the Tests
 
-Install any additional dependencies required by the project if necessary.
-
-4. Run the assignment tests
-python -m pytest tests/test_abs_module.py -v
-
-5. Run CSV-driven tests only
-python -m pytest tests/test_abs_module.py -m csv_data -v
-
-6. Run unit tests only
-python -m pytest tests/test_abs_module.py -m unit -v
-
-Test Case Documentation
-
-The Excel workbook docs/Test_Cases.xlsx is included to document the test cases associated with the assignment.
-
-## Test Results
-
-The assignment test suite was executed successfully.
-
-- Total tests: 27
-- Passed: 27
-- Failed: 0
-- Execution time: 0.34 seconds
-
-Command used:
+Run the complete test suite:
 
 ```powershell
 python -m pytest tests/test_abs_module.py -v
-Acknowledgements
+```
 
-This assignment builds upon the existing TheAlgorithms/Python open-source repository.
+Run CSV-based tests only:
 
-Credit for the original project and its existing source code belongs to its respective contributors. Assignment-specific test code, test data, configuration changes, and documentation are maintained as part of this coursework.
+```powershell
+python -m pytest tests/test_abs_module.py -m csv_data -v
+```
 
-Author
+Run tests marked as unit tests:
 
-Student Name: Hunaiza,sitara
+```powershell
+python -m pytest tests/test_abs_module.py -m unit -v
+```
 
-Course: Software Quality Engineering
+Run tests in parallel using two workers:
 
-Project: Unit Test Automation Solution
+```powershell
+python -m pytest tests/test_abs_module.py -n 2 -v
+```
+
+### Test Results
+
+The recorded full test run reported **27 passed tests**.
+
+The CSV-based test run reported **7 passed tests**, with the remaining tests deselected by the marker filter.
+
+The parallel execution run also reported **27 passed tests**.
+
+### Documentation
+
+The Excel workbook in `docs/Test_Cases.xlsx` contains CSV-based test cases and an execution summary. The project setup demonstration video should also be added to the repository before final submission.
+
+### Submission
+
+Repository: https://github.com/Hunaiza-ct/SQE-Assignment-3
+
+Before submission, verify the required module coverage, test design notes, configuration, setup video, repository visibility, and GCR submission.
